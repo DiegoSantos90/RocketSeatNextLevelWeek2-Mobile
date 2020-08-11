@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, ScrollView } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 
@@ -10,8 +10,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import styles from './styles';
 
 function Favorites() {
-  const [teachers, setTeachers] = useState([]);
-  const [favorites, setFavorites] = useState<number[]>([]);
+  const [favorites, setFavorites] = useState([]);
 
   function loadFavorites() {
     AsyncStorage.getItem('favorites').then((response) => {
@@ -40,7 +39,7 @@ function Favorites() {
           paddingBottom: 16,
         }}
       >
-        {teachers.map((teacher: Teacher) => {
+        {favorites.map((teacher: Teacher) => {
           return (
             <TeacherItem key={teacher.id} teacher={teacher} favorited={true} />
           );

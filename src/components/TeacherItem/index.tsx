@@ -20,7 +20,6 @@ export interface Teacher {
   subject: string;
   whatsapp: string;
 }
-
 interface TeacherItemProps {
   teacher: Teacher;
   favorited: boolean;
